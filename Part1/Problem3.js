@@ -27,3 +27,5 @@ function snakesAndLaddersGame(stepNow, seconds, callback) {
 }
 }, second);
 }
+
+console.log(generateRandomSteps);
