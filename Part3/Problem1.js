@@ -1,54 +1,36 @@
-// Convert Snakes and Ladders form Promise to Async/Await process
-const shallPassed = async () => {
-    const listBrands = [
-      {
-        brand: "H&M",
-        porcessTime: 7000,
-      },
-      {
-        brand: "Zara",
-        porcessTime: 4000,
-      },
-      {
-        brand: "Uniqlo",
-        porcessTime: 5000,
-      },
-      {
-        brand: "Pedro",
-        porcessTime: 9000,
-      },
-      {
-        brand: "The Executive",
-        porcessTime: 10000,
-      },
-      {
-        brand: "Adidas",
-        porcessTime: 8000,
-      },
-      {
-        brand: "Nike",
-        porcessTime: 7000,
-      },
-      {
-        brand: "Puma",
-        porcessTime: 6000,
-      },
-      {
-        brand: "Converse",
-        porcessTime: 6000,
-      },
-      {
-        brand: "Mark & Spencer",
-        porcessTime: 9000,
-      },
-    ];
-    const randomBrand = listBrands[Math.floor(Math.random() * listBrands.length)];
-    const randomTime = randomBrand.porcessTime;
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve(`${typeApparel} ${randomBrand.brand}`);
-      }, randomTime);
-    });
-  };
+const shallPassed = 30;
+let steps = 0;
 
-  console.log(shallPassed);
+function generateRandomSteps() {
+  // don`t touch it
+  return Math.ceil(Math.random() * 10);
+}
+
+function generateRendomSeconds() {
+  // don`t touch it
+  //in milliseconds
+  return Math.ceil(Math.random() * 10) * 1000;
+}
+// console.log(generateRendomSeconds());
+
+function snakeAndLaddersGame(stepNow, seconds) {
+  return new Promise(() => {
+    setTimeout(() => {
+      console.log(
+        `step ini membutuhkan ${seconds / 1000} detik untuk menyelesaikanya\n`
+      ),
+        console.log(
+          `step ini mendapatkan ${stepNow}\nsehingga langkah nyaa bertambah dari ${steps} menjadi ${(steps +=
+            stepNow)}\n`
+        );
+    }, seconds);
+  });
+}
+// snakeAndLaddersGame(generateRandomSteps(), generateRendomSeconds());
+
+(async () => {
+  snakeAndLaddersGame(generateRandomSteps(), generateRendomSeconds());
+  snakeAndLaddersGame(generateRandomSteps(), generateRendomSeconds());
+  await snakeAndLaddersGame(generateRandomSteps(), generateRendomSeconds());
+  snakeAndLaddersGame(generateRandomSteps(), generateRendomSeconds());
+})();

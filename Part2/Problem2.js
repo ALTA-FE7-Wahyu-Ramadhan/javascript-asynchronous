@@ -1,21 +1,20 @@
-// Randomize Colors
-const listColors = ["green", "yellow", "blue", "orange", "red"];
+console.log("generating random color...");
+console.log("loading starts..");
 
-function getRandomColor() {
-  const randomNumber = Math.floor(Math.random() * listColors.length);
-  if (randomNumber > 4) {
-    return new Promise((reject) => {
-      setTimeout(() => {
-        reject("Failed to get random color, please try again");
-      }, 3000);
-    });
-  } else {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve(listColors[randomNumber]);
-      }, 3000);
-    });
-  }
-}
+const getRandomColors = new Promise((reject, resolve) => {
+  const listColors = ["green", "yellow", "blue", "orange", "red"];
 
-console.log(getRandomColor(listColors))
+  setTimeout(() => {
+    const randomNumber = Math.floor(Math.random() * 7);
+
+    if (randomNumber > 4) {
+      reject("Failed to get random color, please try again");
+    }
+    resolve("The color we get is a " + listColors[randomNumber]);
+
+    getRandomColors
+      .then((response) => console.log(response))
+      .catch((err) => console.log(err))
+      .finally(() => console.log("Loading end..."));
+  }, 3000);
+});
